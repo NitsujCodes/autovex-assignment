@@ -1,5 +1,5 @@
 <template>
-  <button type="button" :class="classes" @click="onClick" :style="style">{{ label }} </button>
+  <button type="button" class="font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring-4 focus:outline-none" :class="classes" @click="onClick" :style="style">{{ label }} </button>
 </template>
 
 <script lang="ts" setup>
@@ -23,6 +23,12 @@ const props = withDefaults(defineProps<{
    * background color of the button
    */
   backgroundColor?: string,
+  bgColor?: string,
+  bgColorShade?: number|string,
+  labelColor?: string,
+  labelColorShade?: number|string,
+  hoverColor?: string,
+  hoverColorShade?: number|string,
 
 }>(), { primary: false });
 
@@ -31,10 +37,9 @@ const emit = defineEmits<{
 }>();
 
 const classes = computed(() => ({
-  'storybook-button': true,
-  'storybook-button--primary': props.primary,
-  'storybook-button--secondary': !props.primary,
-  [`storybook-button--${props.size || 'medium'}`]: true,
+  [`bg-${props.bgColor}-${props.bgColorShade}`]: true,
+  [`text-${props.labelColor}-${props.labelColorShade}`]: true,
+  [`hover:bg-${props.hoverColor}-${props.hoverColorShade}`]: true
 }));
 
 const style = computed(() => ({

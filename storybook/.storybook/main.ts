@@ -9,13 +9,15 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@chromatic-com/storybook",
-    "@storybook/experimental-addon-test"
+    "@storybook/experimental-addon-test",
+    "@storybook/addon-styling-webpack",
   ],
   "framework": {
     "name": "@storybook/vue3-vite",
     "options": {
       "docgen": "vue-component-meta"
     }
-  }
+  },
+  staticDirs: ['../src/stories/assets'],
 };
 export default config;
